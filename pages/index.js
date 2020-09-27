@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import Filters from "./components/Filters";
-import Cards from "./components/Cards";
+import Filters from "../components/Filters";
+import Cards from "../components/Cards";
 
 const fetchData = async () => await axios.get('https://api.spaceXdata.com/v3/launches?limit=100')
 .then(res => ({
