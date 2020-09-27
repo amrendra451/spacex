@@ -13,9 +13,9 @@ function filters({ handleFilters, filter }) {
         {
           years.map((year, index) => {
             return (
-              <div className={`col-span-1 border rounded mx-5 mb-2 p-2 hover:bg-green-500 ${+filter.launch_year === year ? 'bg-green-500' : 'bg-green-300'}`} key={index}>
-                <p className="text-center cursor-pointer" data-value={year} data-name="launch_year" onClick={handleFilters} >{year}</p>
-              </div>
+              <button className={`col-span-1 border rounded mx-5 mb-2 p-2 hover:bg-green-500 ${+filter.launch_year === year ? 'bg-green-500' : 'bg-green-300'}`} key={index} data-value={year} data-name="launch_year" onClick={handleFilters}>
+                {year}
+              </button>
             );
           })
         }
@@ -24,23 +24,23 @@ function filters({ handleFilters, filter }) {
         <p className="text-center border-b-2 border-gray-500 mx-8">Successful Launch</p>
       </div>
       <div className="grid grid-cols-2 gap-2">
-        <div className={`col-span-1 border rounded mx-5 mb-2 p-2 hover:bg-green-500 ${filter.launch_success === "true" ? 'bg-green-500' : 'bg-green-300'}`}>
-          <p className="text-center cursor-pointer" data-value="true" data-name="launch_success" onClick={handleFilters}>True</p>
-        </div>
-        <div className={`col-span-1 border rounded mx-5 mb-2 p-2 hover:bg-green-500 ${filter.launch_success === "false" ? 'bg-green-500' : 'bg-green-300'}`}>
-          <p className="text-center cursor-pointer" data-value="false" data-name="launch_success" onClick={handleFilters}>False</p>
-        </div>
+        <button className={`col-span-1 border rounded mx-5 mb-2 p-2 hover:bg-green-500 ${filter.launch_success === "true" ? 'bg-green-500' : 'bg-green-300'}`} data-value="true" data-name="launch_success" onClick={handleFilters}>
+          True
+        </button>
+        <button className={`col-span-1 border rounded mx-5 mb-2 p-2 hover:bg-green-500 ${filter.launch_success === "false" ? 'bg-green-500' : 'bg-green-300'}`} data-value="false" data-name="launch_success" onClick={handleFilters}>
+          False
+        </button>
       </div>
       <div className="my-2">
         <p className="text-center border-b-2 border-gray-500 mx-8">Successful Landing</p>
       </div>
       <div className="grid grid-cols-2 gap-2">
-        <div className={`col-span-1 border rounded mx-5 mb-2 p-2 hover:bg-green-500 ${filter.land_success === "true" ? 'bg-green-500' : 'bg-green-300'}`}>
-          <p className="text-center cursor-pointer" data-value="true" data-name="land_success" onClick={handleFilters}>True</p>
-        </div>
-        <div className={`col-span-1 border rounded mx-5 mb-2 p-2 hover:bg-green-500 ${filter.land_success === "false" ? 'bg-green-500' : 'bg-green-300'}`}>
-          <p className="text-center cursor-pointer" data-value="false" data-name="land_success" onClick={handleFilters}>False</p>
-        </div>
+        <button className={`col-span-1 border rounded mx-5 mb-2 p-2 hover:bg-green-500 ${filter.land_success === "true" ? 'bg-green-500' : 'bg-green-300'}`} data-value="true" data-name="land_success" onClick={handleFilters}>
+          True
+        </button>
+        <button className={`col-span-1 border rounded mx-5 mb-2 p-2 hover:bg-green-500 ${filter.land_success === "false" ? 'bg-green-500' : 'bg-green-300'}`} data-value="false" data-name="land_success" onClick={handleFilters}>
+          False
+        </button>
       </div>
     </div>
   );
