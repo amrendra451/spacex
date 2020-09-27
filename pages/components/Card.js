@@ -9,6 +9,7 @@ function card({ launch }) {
   let mission_id = [];
   let launch_year = [];
   let launch_success = '';
+
   if (launch) {
     const land_success = launch["rocket"]["first_stage"]["cores"][0]["land_success"];
     launch_landing = land_success ? "true" : land_success === false ? "false" : "NA";

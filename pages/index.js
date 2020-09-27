@@ -18,17 +18,24 @@ const fetchData = async () => await axios.get('https://api.spaceXdata.com/v3/lau
 
 const Home = ({ error, launchesData, err }) => {
   const [launches, setLaunches] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     setLaunches((prevValue) => [...prevValue, ...launchesData]);
   }, []);
+
+  const handleFilters = (event) => {
+    const { dataset } = event.target;
+    console.log(dataset);
+    axios.get(`https://api.spaceXdata.com/v3/launches?limit=100&${dataset.name}=${dataset.value}`).then(res => setLaunches(res.data)).catch((err) => console.log(error));
+  }
 
   return (
     <div className="container mx-auto px-4">
       <h1 className="text-3xl font-bold">SpaceX Launch Programs</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-2">
         <div className="col-span-4 md:col-span-1 lg:col-span-1 xl:col-span-1">
-          <Filters />
+          <Filters handleFilters={handleFilters} />
         </div>
         <div className="col-span-4 md:col-span-2 lg:col-span-3 xl:col-span-3 h-full overscroll-contain">
           <Cards launches={launches} />
