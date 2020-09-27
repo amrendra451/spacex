@@ -1,16 +1,53 @@
-export default function Home() {
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+import Filters from "./components/Filters";
+import Cards from "./components/Cards";
+
+const fetchData = async () => await axios.get('https://api.spaceXdata.com/v3/launches?limit=100')
+.then(res => ({
+  error: false,
+  launchesData: res.data,
+}))
+.catch((err) => ({
+  error: true,
+  launchesData: null,
+  err
+})
+);
+
+const Home = ({ error, launchesData, err }) => {
+  const [launches, setLaunches] = useState([]);
+
+  useEffect(() => {
+    setLaunches((prevValue) => [...prevValue, ...launchesData]);
+  }, []);
+
   return (
-    <div className='md:flex bg-white rounded-lg p-24 justify-center'>
-      <img
-        className='h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6'
-        src='<https://pbs.twimg.com/profile_images/1102120097081184257/61tO47TQ_400x400.jpg>'
-      />
-      <div className='text-center md:text-left'>
-        <h2 className='text-lg'>Jake Prins</h2>
-        <div className='text-purple-500'>JavaScript developer</div>
-        <div className='text-gray-600'>Twitter: @jakeprins_nl</div>
-        <div className='text-gray-600'>www.jakeprins.com</div>
+    <div className="container mx-auto px-4">
+      <h1 className="text-3xl font-bold">SpaceX Launch Programs</h1>
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-2">
+        <div className="col-span-4 md:col-span-1 lg:col-span-1 xl:col-span-1">
+          <Filters />
+        </div>
+        <div className="col-span-4 md:col-span-2 lg:col-span-3 xl:col-span-3 h-full overscroll-contain">
+          <Cards launches={launches} />
+        </div>
+      </div>
+      <div>
+        <h3>Developed by: </h3><label>Amrendra Nath</label>
       </div>
     </div>
   );
 }
+
+export default Home;
+
+export const getStaticProps = async () => {
+  const data = await fetchData();
+
+  return {
+    props: data,
+  };
+}
+
