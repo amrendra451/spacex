@@ -1,30 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SpaceX Launch Program
 
-## Getting Started
+A front-end application which would help users list and browse all launches by SpaceX program.
 
-First, run the development server:
+![Screenshot](./assets/homepage.png)
+
+### Lighthouse Report
+
+[Click here](https://lighthouse-dot-webdotdevsite.appspot.com//lh/html?url=https%3A%2F%2Fspacex-taupe.vercel.app%2F) to see the lighthouse report for Performance, SEO, Accessibility, and Best Practices.
+
+![Screenshot](./assets/performance.png)
+
+## Setup
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
+git clone git@github.com:amrendra451/spacex.git
+cd spacex
+yarn install or npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Development mode
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+In the development environment, a frontend server is running on port `3000`.
 
-## Learn More
+```bash
+npm run dev or yarn run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Go to `localhost:3000` to view the app.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Author
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Amrendra Nath](https://github.com/amrendra451)
